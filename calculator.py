@@ -1,0 +1,63 @@
+import tkinter as tk
+def calculator():
+   def click(name):
+      entry.insert(tk.END,name)
+   def calculate(event=None):
+      expr=entry.get()
+      try:
+         ans=eval(expr)
+      except Exception as e:
+         entry.delete(0,tk.END)
+         entry.insert(0,'Error')
+      else:
+         entry.delete(0,tk.END)
+         entry.insert(0,ans)
+   def backspace():
+      delete=entry.get()
+      entry.delete(len(delete)-1,len(delete))
+   window=tk.Tk()
+   window.resizable(0,0)
+   window.title('CALCULATOR')
+   entry=tk.Entry(window)
+   entry.grid(row=0,column=0,columnspan=4)
+   btn_9=tk.Button(window,text='9',command=lambda: click(9))
+   btn_9.grid(row=2,column=0)
+   btn_8=tk.Button(window,width=2,text='8',command=lambda: click(8))
+   btn_8.grid(row=2,column=1)
+   btn_7=tk.Button(window,text='7',command=lambda: click(7))
+   btn_7.grid(row=2,column=2)
+   btn_6=tk.Button(window,text='6',command=lambda: click(6))
+   btn_6.grid(row=3,column=0)
+   btn_5=tk.Button(window,width=2,text='5',command=lambda: click(5))
+   btn_5.grid(row=3,column=1)
+   btn_4=tk.Button(window,text='4',command=lambda: click(4))
+   btn_4.grid(row=3,column=2)
+   btn_3=tk.Button(window,text='3',command=lambda: click(3))
+   btn_3.grid(row=4,column=0)
+   btn_2=tk.Button(window,width=2,text='2',command=lambda: click(2))
+   btn_2.grid(row=4,column=1)
+   btn_1=tk.Button(window,text='1',command=lambda: click(1))
+   btn_1.grid(row=4,column=2)
+   btn_0=tk.Button(window,text='0',command=lambda: click(0))
+   btn_0.grid(row=5,column=0)
+   btn_dec=tk.Button(window,width=2,text='.',command=lambda: click('.'))
+   btn_dec.grid(row=5,column=1)
+   btn_arr=tk.Button(window,text='←',command=backspace)
+   btn_arr.grid(row=1,column=0)
+   btn_AC=tk.Button(window,text='AC',command=lambda: entry.delete(0,tk.END))
+   btn_AC.grid(row=1,column=1)
+   btn_add=tk.Button(window,text='+',command=lambda: click('+'))
+   btn_add.grid(row=1,column=2)
+   btn_sub=tk.Button(window,text='-',command=lambda: click('-'))
+   btn_sub.grid(row=1,column=3)
+   btn_div=tk.Button(window,text='/',command=lambda: click('/'))
+   btn_div.grid(row=2,column=3)
+   btn_multiply=tk.Button(window,text='*',command=lambda: click('*'))
+   btn_multiply.grid(row=3,column=3)
+   btn_equal=tk.Button(window,text='=',command=calculate)
+   btn_equal.grid(row=4,column=3)
+   window.mainloop()
+calculator()
+      
+      
+   
